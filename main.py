@@ -15,7 +15,7 @@ mldb = mldb_wrapper.wrap(mldb)
 mldb.plugin.serve_static_folder("/static", "static")
 
 
-### 
+###
 # Load embedding code for rt predictions
 inceptionUrl = "https://s3.amazonaws.com/public-mldb-ai/models/inception_dec_2015.zip"
 
@@ -78,6 +78,8 @@ def loadCollection(collection, prefix, limit=-1):
 # load built-in collections
 for collection in ["recipe", "transport", "pets", "realestate"]:
     loadCollection(collection, filePrefix)
+
+loadCollection("realestate_big", filePrefix)
 
 # load any extra collections specified at plugin creation
 if "extraCollections" in mldb.plugin.args:
